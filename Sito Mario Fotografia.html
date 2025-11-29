@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Mario Cacopardi – Fotografo</title>
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #0d0d0d, #c0c0c0);
+            color: #e4e4e4;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: #111;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: #e4e4e4;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        nav a:hover { color: #6aa6ff; }
+
+        @media (max-width: 600px) {
+            nav a {
+                font-size: 26px;
+                padding: 10px;
+            }
+        }
+
+        .hero {
+            height: 70vh;
+            background: url('https://i.postimg.cc/mDvsJbNc/Whats-App-Image-2025-10-25-at-15-22-49.jpg') center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            color: white;
+            position: relative;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.45);
+        }
+        .hero > div { position: relative; z-index: 2; }
+
+        .section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 60px 20px;
+        }
+
+        /* Portfolio */
+        .portfolio-categories {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+        .portfolio-categories button {
+            padding: 10px 20px;
+            border: none;
+            background: #222;
+            color: #e4e4e4;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .portfolio-categories button:hover,
+        .portfolio-categories button.active { background: #6aa6ff; }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .portfolio-item {
+            position: relative;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .portfolio-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .portfolio-title {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.6);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Lightbox */
+        #lightbox {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0,0.9);
+            visibility: hidden; opacity: 0;
+            transition: 0.3s;
+            z-index: 10000;
+        }
+        #lightbox.active { visibility: visible; opacity: 1; }
+        #lightbox img {
+            max-width: 85%; max-height: 80%;
+            border-radius: 10px;
+        }
+
+        /* Contatti e servizi */
+        #servizi, #contatti {
+            color: #000;
+        }
+        #servizi p, #contatti span, #contatti a {
+            font-size: 20px;
+        }
+
+        .contatti { display:flex; flex-direction:column; gap:10px; margin-top:15px; }
+        .contatti a, .contatti span {
+            color: #000;
+            text-decoration: none;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .contatti a:hover, .contatti span:hover { color: #6aa6ff; }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #111;
+            color: #777;
+            margin-top: 40px;
+        }
+
+        /* Immagini molto grandi su telefoni */
+        @media (max-width: 600px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+                gap: 20px;
+            }
+            .portfolio-item img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div style="font-size:22px; font-weight:700;">Mario Cacopardi</div>
+    <div>
+        <a href="#home">Home</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#servizi">Servizi</a>
+        <a href="#contatti">Contatti</a>
+    </div>
+</nav>
+
+<section class="hero" id="home">
+    <div>
+        <h1>Mario Cacopardi</h1>
+        <p>Fotografo • Giocatore di Pallanuoto • Creativo</p>
+        <p>Collaborazioni con giornali, squadre e associazioni sportive</p>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Chi Sono</h2>
+    <p>
+        Sono <strong>Mario Cacopardi</strong>, un giovane fotografo sportivo con esperienza reale sul campo.
+        Specializzato in pallanuoto, calcio, surf, baseball e tennis.
+    </p>
+</section>
+
+<section class="section" id="portfolio">
+    <h2>Portfolio</h2>
+    <p>Seleziona una categoria per vedere i miei lavori:</p>
+
+    <div class="portfolio-categories">
+        <button class="active" data-category="sport">Sport</button>
+        <button data-category="eventi">Eventi</button>
+        <button data-category="locandine">Locandine</button>
+        <button data-category="tiktok">TikTok</button>
+    </div>
+
+    <!-- SPORT -->
+    <div class="portfolio-grid" id="sport">
+        <div class="portfolio-item">
+            <div class="portfolio-title">Pallanuoto</div>
+            <img src="https://i.postimg.cc/ZvnrJJ8m/91dba799-54a4-4d4c-8057-8fd3e75bb695.jpg" alt="Pallanuoto">
+        </div>
+
+        <div class="portfolio-item">
+            <div class="portfolio-title">Palestra</div>
+            <img src="https://i.postimg.cc/qtQwrbPM/DSC2477.jpg" alt="Palestra">
+        </div>
+
+        <div class="portfolio-item">
+            <div class="portfolio-title">Surf</div>
+        </div>
+
+        <div class="portfolio-item">
+            <div class="portfolio-title">Baseball</div>
+        </div>
+    </div>
+
+    <!-- EVENTI -->
+    <div class="portfolio-grid" id="eventi" style="display:none;">
+        <div class="portfolio-item">
+            <img src="https://images.unsplash.com/photo-1526676037777-05a232c940bd" alt="Evento 1">
+        </div>
+        <div class="portfolio-item">
+            <img src="https://images.unsplash.com/photo-1505238680356-667803448bb6" alt="Evento 2">
+        </div>
+    </div>
+
+    <!-- LOCANDINE -->
+    <div class="portfolio-grid" id="locandine" style="display:none;">
+        <img src="https://www.imghippo.com/i/dUuP2344xJk.jpeg" alt="Locandina 1">
+        <img src="https://www.imghippo.com/i/oMa6594WA.jpeg" alt="Locandina 2">
+        <img src="https://www.imghippo.com/i/1763403644302" alt="Locandina 3">
+    </div>
+
+    <!-- TIKTOK -->
+    <div class="portfolio-grid" id="tiktok" style="display:none;">
+        <!-- Nessuna foto -->
+    </div>
+
+</section>
+
+<div id="lightbox"></div>
+
+<section class="section" id="servizi">
+    <h2>Servizi Fotografici</h2>
+    <p><strong>Sport</strong> – Pallanuoto, Calcio, Surf, Baseball, Tennis • 20€-60€</p>
+    <p><strong>Eventi</strong> – Cerimonie, feste, manifestazioni • 200€-1000€</p>
+    <p><strong>Locandine</strong> – Grafiche professionali</p>
+    <p><strong>Social</strong> – Video TikTok • 10€-15€</p>
+</section>
+
+<section class="section" id="contatti">
+    <h2>Contatti</h2>
+    <div class="contatti">
+        <span><i class="fas fa-envelope"></i> mariocacopardi100@gmail.com</span>
+        <span><i class="fas fa-phone-alt"></i> 348 420 4296</span>
+        <a href="https://www.instagram.com/oltre.lobiettivo0" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://www.tiktok.com/@oltre.lobiettivo2?lang=it-IT" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+        <a href="https://www.facebook.com/share/1BWPVxe8zj" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+    </div>
+</section>
+
+<footer>
+    &copy; 2025 Mario Cacopardi. Tutti i diritti riservati.
+</footer>
+
+<script>
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    document.querySelectorAll(".portfolio-item img").forEach(img => {
+        img.addEventListener("click", () => {
+            lightbox.classList.add("active");
+            lightbox.innerHTML = `<img src="${img.src}" alt="">`;
+        });
+    });
+    lightbox.addEventListener("click", () => lightbox.classList.remove("active"));
+
+    // Categorie portfolio
+    const buttons = document.querySelectorAll(".portfolio-categories button");
+    const grids = document.querySelectorAll(".portfolio-grid");
+
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            buttons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            grids.forEach(grid => grid.style.display = "none");
+            document.getElementById(btn.dataset.category).style.display = "grid";
+        });
+    });
+</script>
+
+</body>
+</html>
